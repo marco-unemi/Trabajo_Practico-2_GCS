@@ -1,0 +1,62 @@
+<div class="docker-login-screen">
+  <div class="login-wave login-wave-one"></div>
+  <div class="login-wave login-wave-two"></div>
+
+  <div class="auth-card">
+    <div class="auth-card-body">
+      <div class="docker-brand">
+        <span class="docker-logo">
+          <i class="bi bi-box-seam-fill"></i>
+          <i class="bi bi-water"></i>
+        </span>
+        <h4>Iniciando sesion</h4>
+        <p>Por favor, ingresa tus credenciales para continuar.</p>
+      </div>
+
+      <form
+        id="formAuthentication"
+        action="{{ url_for('loginCliente') }}"
+        method="POST">
+        <div class="auth-field">
+          <label for="email_user">Usuario</label>
+          <div class="auth-input">
+            <i class="bi bi-person"></i>
+            <input
+              type="email"
+              name="email_user"
+              id="email_user"
+              placeholder="Ingresa tu usuario"
+              autofocus
+              required />
+          </div>
+        </div>
+
+        <div class="auth-field form-password-toggle">
+          <label for="pass_user">Contrasena</label>
+          <div class="auth-input">
+            <i class="bi bi-lock"></i>
+            <input
+              type="password"
+              name="pass_user"
+              id="pass_user"
+              placeholder="Ingresa tu contrasena"
+              required />
+            <span class="cursor-pointer"><i class="bx bx-hide"></i></span>
+          </div>
+        </div>
+
+        <button class="btn docker-login-btn w-100" type="submit">
+          <i class="bi bi-box-arrow-in-right"></i>
+          Iniciar sesion
+        </button>
+      </form>
+
+      <p class="auth-help">
+        <a href="{{ url_for('cpanelRecoveryPassUser') }}">Olvidaste tu contrasena?</a>
+      </p>
+      <p class="auth-help auth-register-link">
+        <a href="{{ url_for('cpanelRegisterUser') }}">Crear mi cuenta</a>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+{% extends 'public/base_cpanel.html' %}
+{% block title %}CRUD con Python | Lista de Usuarios{% endblock %}
+
+{% block body %}
+<div class="page-shell">
+  {% if (resp_usuariosBD) %}
+  <div class="page-heading">
+    <div>
+      <span class="page-kicker">Accesos</span>
+      <h3>Lista de usuarios</h3>
+      <p>Administra las cuentas creadas en el sistema.</p>
+    </div>
+  </div>
+
+  <div class="card data-card">
+    <div class="card-header table-toolbar">
+      <div>
+        <h5 class="mb-1">Usuarios creados</h5>
+        <small class="text-muted">{{ resp_usuariosBD|length }} cuentas registradas</small>
+      </div>
+    </div>
+    <div class="table-responsive text-nowrap">
+      <table class="table table-hover align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th>Email</th>
+            <th>Fecha de creacion</th>
+            <th class="text-end">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for usuario in resp_usuariosBD %}
+          <tr>
+            <td>
+              <div class="fw-semibold">{{ usuario.name_surname}}</div>
+              <small class="text-muted">ID {{ usuario.id }}</small>
+            </td>
+            <td>{{ usuario.email_user}}</td>
+            <td>{{ usuario.created_user}}</td>
+            <td>
+              <div class="table-actions">
+                <button
+                  class="btn btn-icon btn-outline-danger"
+                  onclick="eliminarUsuario('{{ usuario.id }}');"
+                  title="Eliminar usuario">
+                  <i class="bi bi-trash3"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <i class="bi bi-people"></i>
+    <h3>No hay usuarios</h3>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block customJS %}
+<script>
+  function eliminarUsuario(id) {
+    if (confirm("Estas seguro que deseas eliminar el Usuario?")) {
+      let url = `/borrar-usuario/${id}`;
+      if (url) {
+        window.location.href = url;
+      }
+    }
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'public/base_cpanel.html' %}
+{% block title %}CRUD con Python | Lista de Empleados{% endblock %}
+
+{% block body %}
+<div class="page-shell">
+  <div class="page-heading">
+    <div>
+      <span class="page-kicker">Equipo</span>
+      <h3>Lista de empleados</h3>
+      <p>Consulta, actualiza o elimina los registros del personal.</p>
+    </div>
+    <a href="{{ url_for('viewFormEmpleado') }}" class="btn btn-primary">
+      <i class="bi bi-plus-circle"></i>
+      Nuevo empleado
+    </a>
+  </div>
+
+  <div class="card data-card">
+    <div class="card-header table-toolbar">
+      <div>
+        <h5 class="mb-1">Registros</h5>
+        <small class="text-muted">{{ empleados|length }} empleados encontrados</small>
+      </div>
+      <div class="search-control">
+        <i class="bi bi-search"></i>
+        <input
+          type="search"
+          id="search"
+          class="form-control"
+          placeholder="Buscar empleado..."
+          onkeyup="buscadorTable('tbl_empleados')" />
+      </div>
+    </div>
+
+    <div class="table-responsive text-nowrap">
+      <table
+        id="tbl_empleados"
+        class="table table-hover align-middle mb-0"
+        cellspacing="0"
+        width="100%">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Empleado</th>
+            <th>Sexo</th>
+            <th>Salario</th>
+            <th class="text-end">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for empleado in empleados %}
+          <tr id="empleado_{{ empleado.id_empleado }}">
+            <td><span class="row-number">{{ loop.index }}</span></td>
+            <td>
+              <div class="fw-semibold">
+                {{ empleado.nombre_empleado }} {{ empleado.apellido_empleado }}
+              </div>
+              <small class="text-muted">ID {{ empleado.id_empleado }}</small>
+            </td>
+            <td><span class="badge bg-label-primary">{{ empleado.sexo_empleado }}</span></td>
+            <td class="fw-semibold">
+              $ {{ '{:,.0f}'.format(empleado.salario_empleado).replace(',', '.')}}
+            </td>
+            <td>
+              <div class="table-actions">
+                <a
+                  href="/detalles-empleado/{{ empleado.id_empleado }}"
+                  class="btn btn-icon btn-outline-info"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Ver detalles">
+                  <i class="bi bi-eye"></i>
+                </a>
+                <a
+                  href="{{ url_for('viewEditarEmpleado', id = empleado.id_empleado) }}"
+                  class="btn btn-icon btn-outline-success"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Actualizar">
+                  <i class="bi bi-arrow-clockwise"></i>
+                </a>
+                <a
+                  href="#"
+                  onclick="eliminarEmpleado('{{ empleado.id_empleado }}','{{ empleado.foto_empleado }}');"
+                  class="btn btn-icon btn-outline-danger"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Eliminar empleado {{ empleado.nombre_empleado }}">
+                  <i class="bi bi-trash3"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

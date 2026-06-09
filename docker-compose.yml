@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: gestion_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: NuevaPassword123!
+      MYSQL_DATABASE: crud_python
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pNuevaPassword123!"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: gestion_flask
+    restart: unless-stopped
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: NuevaPassword123!
+      DB_NAME: crud_python
+    ports:
+      - "5600:5600"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql_data:

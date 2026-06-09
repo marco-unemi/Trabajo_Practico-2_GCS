@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.git/
+.venv/
+venv/
+env/
+.env
+.edge-responsive-profile-check/
+responsive-*.png
+template-sneat-1.0.0.zip
+my-app/static/downloads-excel/*.xlsx

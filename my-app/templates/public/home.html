@@ -1,0 +1,62 @@
+{% extends 'public/base_cpanel.html' %}
+{% block title %}CRUD con Python | Bienvenida{% endblock %}
+
+{% block body %}
+<div class="welcome-screen">
+  <div class="welcome-alert">
+    <span><i class="bi bi-check-circle"></i></span>
+    <strong>Felicitaciones!</strong>
+    <span>Inicio de sesion fue correcta!</span>
+    <button type="button" aria-label="Cerrar">x</button>
+  </div>
+
+  <section class="welcome-hero">
+    <div class="welcome-copy">
+      <h2>Bienvenido al sistema</h2>
+      <p>Gestiona la informacion de empleados de forma rapida y eficiente.</p>
+    </div>
+    <div class="welcome-illustration" aria-hidden="true">
+      <div class="illustration-card">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="illustration-bars">
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+    </div>
+  </section>
+
+  <div class="welcome-metrics">
+    <a href="{{ url_for('lista_empleados') }}" class="welcome-metric-card">
+      <span class="metric-bubble"><i class="bi bi-people"></i></span>
+      <small>Empleados Registrados</small>
+      <strong>{{ empleados_count }}</strong>
+      <em>Ver empleados <i class="bi bi-arrow-right"></i></em>
+    </a>
+
+    <a href="{{ url_for('viewFormEmpleado') }}" class="welcome-metric-card">
+      <span class="metric-bubble"><i class="bi bi-person-plus"></i></span>
+      <small>Nuevos Empleados Este mes</small>
+      <strong>1</strong>
+      <em>Ver detalles <i class="bi bi-arrow-right"></i></em>
+    </a>
+
+    <a href="{{ url_for('reporteBD') }}" class="welcome-metric-card">
+      <span class="metric-bubble"><i class="bi bi-file-earmark-text"></i></span>
+      <small>Reportes Generados</small>
+      <strong>0</strong>
+      <em>Ver reportes <i class="bi bi-arrow-right"></i></em>
+    </a>
+
+    <a href="{{ url_for('usuarios') }}" class="welcome-metric-card">
+      <span class="metric-bubble metric-bubble-shield"><i class="bi bi-shield-check"></i></span>
+      <small>Usuarios Activos</small>
+      <strong>{{ usuarios_count }}</strong>
+      <em>Ver usuarios <i class="bi bi-arrow-right"></i></em>
+    </a>
+  </div>
+</div>
+{% endblock %}

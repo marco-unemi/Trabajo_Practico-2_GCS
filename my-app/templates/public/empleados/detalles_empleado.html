@@ -1,0 +1,88 @@
+{% extends 'public/base_cpanel.html' %}
+{% block title %}CRUD con Python | Informacion del Empleado{% endblock %}
+
+{% block body %}
+<div class="page-shell">
+  {% if detalle_empleado|length %}
+  <div class="page-heading">
+    <div>
+      <span class="page-kicker">Perfil laboral</span>
+      <h3>Informacion del empleado</h3>
+      <p>Vista completa del registro seleccionado.</p>
+    </div>
+    <a href="/lista-de-empleados" class="btn btn-outline-secondary">
+      <i class="bi bi-arrow-left"></i>
+      Volver
+    </a>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-xl-4">
+      <div class="card profile-card">
+        <div class="card-body text-center">
+          <img
+            class="profile-photo"
+            src="/static/fotos_empleados/{{ detalle_empleado.foto_empleado }}"
+            alt="imagen-empleado" />
+          <h4 class="mb-1">
+            {{ detalle_empleado.nombre_empleado }} {{ detalle_empleado.apellido_empleado }}
+          </h4>
+          <span class="badge bg-label-primary">{{ detalle_empleado.profesion_empleado }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-8">
+      <div class="card detail-card">
+        <div class="card-header">
+          <h5 class="mb-0">Datos del empleado</h5>
+        </div>
+        <div class="card-body">
+          <div class="detail-grid">
+            <div class="detail-item">
+              <span>Nombre</span>
+              <strong>{{ detalle_empleado.nombre_empleado }}</strong>
+            </div>
+            <div class="detail-item">
+              <span>Apellido</span>
+              <strong>{{ detalle_empleado.apellido_empleado }}</strong>
+            </div>
+            <div class="detail-item">
+              <span>Sexo</span>
+              <strong>{{ detalle_empleado.sexo_empleado }}</strong>
+            </div>
+            <div class="detail-item">
+              <span>Telefono</span>
+              <strong>{{ detalle_empleado.telefono_empleado }}</strong>
+            </div>
+            <div class="detail-item">
+              <span>Email</span>
+              <strong>{{ detalle_empleado.email_empleado }}</strong>
+            </div>
+            <div class="detail-item">
+              <span>Salario</span>
+              <strong>
+                $ {{ '{:,.0f}'.format(detalle_empleado.salario_empleado).replace(',', '.')}}
+              </strong>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer form-actions">
+          <a
+            href="{{ url_for('viewEditarEmpleado', id = detalle_empleado.id_empleado) }}"
+            class="btn btn-primary">
+            <i class="bi bi-pencil-square"></i>
+            Editar empleado
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <i class="bi bi-person-x"></i>
+    <h3>No existe el empleado</h3>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

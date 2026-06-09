@@ -1,0 +1,44 @@
+{% for empleado in dataBusqueda %}
+<tr id="empleado_{{ empleado.id_empleado }}">
+  <td><span class="row-number">{{ loop.index }}</span></td>
+  <td>
+    <div class="fw-semibold">
+      {{ empleado.nombre_empleado }} {{ empleado.apellido_empleado }}
+    </div>
+    <small class="text-muted">ID {{ empleado.id_empleado }}</small>
+  </td>
+  <td><span class="badge bg-label-primary">{{ empleado.sexo_empleado }}</span></td>
+  <td class="fw-semibold">
+    $ {{ '{:,.0f}'.format(empleado.salario_empleado).replace(',', '.')}}
+  </td>
+  <td>
+    <div class="table-actions">
+      <a
+        href="/detalles-empleado/{{ empleado.id_empleado }}"
+        class="btn btn-icon btn-outline-info"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Ver detalles">
+        <i class="bi bi-eye"></i>
+      </a>
+      <a
+        href="{{ url_for('viewEditarEmpleado', id = empleado.id_empleado) }}"
+        class="btn btn-icon btn-outline-success"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Actualizar">
+        <i class="bi bi-arrow-clockwise"></i>
+      </a>
+      <a
+        href="#"
+        onclick="eliminarEmpleado('{{ empleado.id_empleado }}','{{ empleado.foto_empleado }}');"
+        class="btn btn-icon btn-outline-danger"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Eliminar empleado {{ empleado.nombre_empleado }}">
+        <i class="bi bi-trash3"></i>
+      </a>
+    </div>
+  </td>
+</tr>
+{% endfor %}
