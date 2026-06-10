@@ -1,88 +1,80 @@
 {% extends 'public/login/base_login.html' %}
 <!---->
-{% block title %}Crud con Python 🐍 | crear cuenta{% endblock %}
+{% block crud %}Crud con Python | crear cuenta{% endblock %}
 <!---->
 {% block body %}
 
-<div class="container-xxl">
-  <div class="authentication-wrapper authentication-basic container-p-y">
-    <div class="authentication-inner">
-      <div class="card">
-        <div class="card-body">
-          <div class="app-brand justify-content-center">
-            <span class="app-brand-logo">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Python Flask logo">
-                <defs>
-                  <linearGradient id="brandGradientRegister" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#00b74a" />
-                    <stop offset="100%" stop-color="#0db4ff" />
-                  </linearGradient>
-                </defs>
-                <circle cx="32" cy="32" r="22" fill="url(#brandGradientRegister)" opacity="0.18" />
-                <path d="M22 22c0-6 5-11 10-11s10 5 10 11-5 11-10 11-10-5-10-11Z" fill="#00b74a" />
-                <path d="M28 34c2 4 6 6 9 6 4 0 7-2 9-6" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" />
-                <circle cx="30" cy="24" r="3" fill="#fff" />
-                <circle cx="38" cy="24" r="3" fill="#fff" />
-              </svg>
-            </span>
-            <div class="app-brand-text">PYTHON <span>&amp;</span> FLASK</div>
-          </div>
+<div class="docker-login-screen">
+  <div class="login-wave login-wave-one"></div>
+  <div class="login-wave login-wave-two"></div>
 
-          <form
-            class="mb-3"
-            action="{{ url_for('cpanelResgisterUserBD') }}"
-            method="POST">
-            <div class="mb-3">
-              <label for="name_surname" class="form-label">
-                Nombre y apellido
-              </label>
-              <input
-                type="text"
-                class="form-control"
-                name="name_surname"
-                required
-                autofocus />
-            </div>
-            <div class="mb-3">
-              <label for="email_user" class="form-label">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                name="email_user"
-                required />
-            </div>
-            <div class="mb-3 form-password-toggle">
-              <label class="form-label" for="pass_user">Clave</label>
-              <div class="input-group input-group-merge">
-                <input
-                  type="password"
-                  class="form-control"
-                  name="pass_user"
-                  id="pass_user"
-                  placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                  aria-describedby="password"
-                  required />
-                <span class="input-group-text cursor-pointer">
-                  <i class="bx bx-hide"></i>
-                </span>
-              </div>
-            </div>
-            <button class="btn btn-primary w-100">
-              Crear cuenta
-              <i class="bi bi-arrow-right-circle"></i>
-            </button>
-          </form>
+  <div class="auth-card auth-card-register">
+    <div class="auth-card-body">
+      <div class="docker-brand">
+        <span class="docker-logo">
+          <i class="bi bi-box-seam-fill"></i>
+          <i class="bi bi-water"></i>
+        </span>
+        <h4>Crear usuario</h4>
+        <p>Completa tus datos para crear una cuenta y acceder al panel.</p>
+      </div>
 
-          <div class="text-center">
-            <a
-              href="{{ url_for('inicio') }}"
-              class="d-flex align-items-center justify-content-center">
-              <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
-              volver
-            </a>
+      <form
+        action="{{ url_for('cpanelResgisterUserBD') }}"
+        method="POST">
+        <div class="auth-field">
+          <label for="name_surname">Nombre y apellido</label>
+          <div class="auth-input">
+            <i class="bi bi-person"></i>
+            <input
+              type="text"
+              name="name_surname"
+              id="name_surname"
+              placeholder="Ingresa tu nombre completo"
+              required
+              autofocus />
           </div>
         </div>
-      </div>
+
+        <div class="auth-field">
+          <label for="email_user">Email</label>
+          <div class="auth-input">
+            <i class="bi bi-envelope"></i>
+            <input
+              type="email"
+              name="email_user"
+              id="email_user"
+              placeholder="Ingresa tu email"
+              required />
+          </div>
+        </div>
+
+        <div class="auth-field form-password-toggle">
+          <label for="pass_user">Clave</label>
+          <div class="auth-input">
+            <i class="bi bi-lock"></i>
+            <input
+              type="password"
+              name="pass_user"
+              id="pass_user"
+              placeholder="Ingresa tu clave"
+              required />
+            <span class="cursor-pointer"><i class="bx bx-hide"></i></span>
+          </div>
+        </div>
+
+        <button class="btn docker-login-btn w-100" type="submit">
+          Crear cuenta
+          <i class="bi bi-arrow-right-circle"></i>
+        </button>
+      </form>
+
+      <p class="auth-help">
+        <a href="{{ url_for('inicio') }}">
+          <i class="bx bx-chevron-left scaleX-n1-rtl"></i>
+          Volver al login
+        </a>
+      </p>
     </div>
   </div>
 </div>

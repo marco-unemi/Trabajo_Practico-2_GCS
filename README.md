@@ -4,23 +4,39 @@ Aprende a desarrollar un sistema **CRUD** utilizando **Python 🐍** y **MySQL �
 
 ## Vista previa 🗃
 
-![Dashboard Login](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/master/Dashboard-python-login-urian-viera.png)
+<img src="./assets/page-login.png">
 
-![Crear Usuario](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/master/dashboard-python-crear-user-urian-viera.png)
+<br>
 
-![Recuperar Contraseña](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/master/dashboard-python-recuperar-clave-urian-viera.png)
+<img src="./assets/page-register.png">
 
-![Panel Principal](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/master/dashborad-python-home-urian-viera.png)
+<br>
 
-![Registrar Cliente](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/master/dashboard-python-registrar-cliente-urian-viera.png)
+<img src="./assets/page-recovery-password.png">
 
-![Lista de Empleados](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/master/dashboard-python-lista-empleados-urian-viera.png)
+<br>
 
-![Lista de Usuarios](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/master/dashboard-python-lista-usuarios-urian-viera.png)
+<img src="./assets/page-panel-principal.png">
 
-![Editar Perfil](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/master/dashboard-python-editar-perfil-urian-viera.png)
+<br>
 
-![Reporte de Empleados](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/master/dashboard-python-reporte-empleados-urian-viera.png)
+<img src="./assets/page-registrar-empleados.png">
+
+<br>
+
+<img src="./assets/page-lista-de-empleados.png">
+
+<br>
+
+<img src="./assets/page-lista-de-usuarios.png">
+
+<br>
+
+<img src="./assets/page-editar-perfil.png">
+
+<br>
+
+<img src="./assets/page-reportes.png">
 
 ---
 
